@@ -67,9 +67,10 @@ docker-multiarch-mikrotik-build-devel:
   rules:
     - if: ($CI_PRODUCTION_VERSION_SWITCH != "true" && $CI_PRODUCTION_LATEST_SWITCH != "true")
       changes:
-        - Dockerfile
-        - .gitlab-ci-vars.yml
-        - ./config_files/*
+        - $CI_PROJECT_DIR/Dockerfile
+        - $CI_PROJECT_DIR/.gitlab-ci.yml
+        - $CI_PROJECT_DIR/.gitlab-ci-vars.yml
+        - $CI_PROJECT_DIR/config_files/*
   when: always
 
 docker-multiarch-mikrotik-build-devel-version:
@@ -98,9 +99,10 @@ docker-multiarch-mikrotik-build-devel-version:
   rules:
     - if: ($CI_PRODUCTION_VERSION_SWITCH == "true" && $CI_PRODUCTION_LATEST_SWITCH != "true")  
       changes:
-        - Dockerfile
-        - .gitlab-ci-vars.yml
-        - ./config_files/*        
+        - $CI_PROJECT_DIR/Dockerfile
+        - $CI_PROJECT_DIR/.gitlab-ci.yml
+        - $CI_PROJECT_DIR/.gitlab-ci-vars.yml
+        - $CI_PROJECT_DIR/config_files/*        
   when: always
 
 docker-multiarch-mikrotik-build-devel-version-latest:
@@ -129,7 +131,8 @@ docker-multiarch-mikrotik-build-devel-version-latest:
   rules:
     - if: ($CI_PRODUCTION_LATEST_SWITCH == "true" &&  $CI_PRODUCTION_VERSION_SWITCH == "true")   
       changes:
-        - Dockerfile
-        - .gitlab-ci-vars.yml
-        - ./config_files/*
+        - $CI_PROJECT_DIR/Dockerfile
+        - $CI_PROJECT_DIR/.gitlab-ci.yml
+        - $CI_PROJECT_DIR/.gitlab-ci-vars.yml
+        - $CI_PROJECT_DIR/config_files/*
   when: always
